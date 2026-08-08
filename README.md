@@ -57,10 +57,11 @@ s.close()
 
 ## OUTPUT
 
+````client.py````
 
 <img width="973" height="206" alt="image" src="https://github.com/user-attachments/assets/e41d679c-565b-4e1c-a55c-d974539fb6be" />
 
-
+````server.py````
 <img width="992" height="138" alt="image" src="https://github.com/user-attachments/assets/c923705b-60e8-4d58-8273-e69067ec5138" />
 
 
