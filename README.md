@@ -11,8 +11,60 @@ To write a python program to perform stop and wait protocol
 ## PROGRAM
 ````server.py````
 ````python
+import socket
 
+s = socket.socket()
+s.bind(('localhost', 8000))
+s.listen(1)
+
+print("Waiting for connection...")
+
+conn, addr = s.accept()
+print("Connected to", addr)
+
+while True:
+    data = conn.recv(1024).decode()
+
+    if not data:
+        break
+
+    print("Frame received:", data)
+
+    conn.send("ACK".encode())
+
+conn.close()
+s.close()
 ````
+
+````client.py````
+````python
+import socket
+
+s = socket.socket()
+s.connect(('localhost', 8000))
+
+n = int(input("Enter number of frames: "))
+
+for i in range(n):
+    msg = input("Enter frame: ")
+    s.send(msg.encode())
+
+    ack = s.recv(1024).decode()
+    print("Received:", ack)
+
+s.close()
+````
+
 ## OUTPUT
+
+
+<img width="973" height="206" alt="image" src="https://github.com/user-attachments/assets/e41d679c-565b-4e1c-a55c-d974539fb6be" />
+
+
+<img width="992" height="138" alt="image" src="https://github.com/user-attachments/assets/c923705b-60e8-4d58-8273-e69067ec5138" />
+
+
+
+
 ## RESULT
 Thus, python program to perform stop and wait protocol was successfully executed.
